@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 56" fill="none">
-  <rect x="2" y="4" width="48" height="48" rx="12" fill="#111D2C"/>
-  <rect x="15" y="16" width="12" height="12" rx="3" stroke="#3B82F6" stroke-width="2.4"/>
-  <rect x="25" y="28" width="12" height="12" rx="3" stroke="#4FD1C5" stroke-width="2.4"/>
-  <path d="M27 22H33" stroke="#3B82F6" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M21 28V34" stroke="#3B82F6" stroke-width="2.4" stroke-linecap="round"/>
-  <circle cx="39.5" cy="16.5" r="3.2" fill="#FF5C5C"/>
-  <text x="66" y="36" fill="#FFFFFF" font-family="Space Grotesk, Inter, Arial, Helvetica, sans-serif" font-size="28" font-weight="600" letter-spacing="-0.6">Droneza</text>
-</svg>
