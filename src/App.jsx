@@ -111,7 +111,10 @@ const faqs = [
 function Logo({ light = false }) {
   return (
     <a className={`brand ${light ? "brand--light" : ""}`} href="/" aria-label="Droneza home">
-      <img src="/assets/droneza-lockup-trim.png" alt="Droneza" />
+      <img
+        src={light ? "/assets/droneza-logo-light.svg" : "/assets/droneza-logo.svg"}
+        alt="Droneza"
+      />
     </a>
   );
 }

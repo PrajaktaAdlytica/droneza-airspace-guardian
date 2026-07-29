@@ -1534,7 +1534,7 @@ h2 em {
 }
 
 .brand--light {
-  filter: brightness(0) invert(1);
+  filter: none;
 }
 
 .footer-lead p {
