@@ -142,10 +142,28 @@ function SimulationLabel({ dark = false }) {
   );
 }
 
-function Header() {
+function Header({ story = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
-  const dark = window.location.pathname === "/security";
+  const [overIntro, setOverIntro] = useState(story);
+  const dark = window.location.pathname === "/security" || (story && overIntro);
+
+  useEffect(() => {
+    if (!story) return undefined;
+
+    const updateHeader = () => {
+      const storyStart = document.querySelector(".home-site")?.offsetTop ?? window.innerHeight;
+      setOverIntro(window.scrollY < storyStart - 88);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    window.addEventListener("resize", updateHeader);
+    return () => {
+      window.removeEventListener("scroll", updateHeader);
+      window.removeEventListener("resize", updateHeader);
+    };
+  }, [story]);
 
   const toggleDropdown = (name) => {
     setOpenDropdown((current) => (current === name ? null : name));
@@ -156,8 +174,15 @@ function Header() {
     setMenuOpen(false);
   };
 
+  const skipIntro = (event) => {
+    event.preventDefault();
+    closeAll();
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    document.querySelector(".home-site")?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  };
+
   return (
-    <header className={`site-header ${dark ? "site-header--dark" : ""}`}>
+    <header className={`site-header ${story ? "site-header--story" : ""} ${dark ? "site-header--dark" : ""}`}>
       <Logo light={dark} />
       <button className="menu-toggle" type="button" onClick={() => setMenuOpen((value) => !value)} aria-label="Toggle navigation">
         {menuOpen ? <X /> : <Menu />}
@@ -196,11 +221,16 @@ function Header() {
         <a href="/security" onClick={closeAll}>Security</a>
         <a href="/company" onClick={closeAll}>Company</a>
         <a href="/news/funding-announcement" onClick={closeAll}>Funding</a>
+        {story && overIntro ? (
+          <button className="story-nav-skip" type="button" onClick={skipIntro}>
+            Skip intro <ArrowRight size={15} />
+          </button>
+        ) : null}
       </nav>
       <div className="header-actions">
         <a className="sign-in" href="/sign-in">Sign in</a>
-        <a className="button button--primary button--small" href="/request-demo">
-          Review a scenario <ArrowRight size={16} />
+        <a className="button button--primary button--small" href={story && overIntro ? "#top" : "/request-demo"} onClick={story && overIntro ? skipIntro : undefined}>
+          {story && overIntro ? "Skip intro" : "Review a scenario"} <ArrowRight size={16} />
         </a>
       </div>
     </header>
@@ -258,13 +288,7 @@ function IncidentEntry() {
       <div className="incident-entry__sticky">
         <IncidentBackdrop />
         <div className="incident-entry__scrim" aria-hidden="true" />
-        <div className="incident-entry__topbar">
-          <Logo light />
-          <button className="incident-entry__skip" type="button" onClick={enterSite}>
-            Skip intro
-          </button>
-        </div>
-
+        <div className="incident-entry__topbar" aria-hidden="true" />
         <div className="incident-entry__content">
           <div className="incident-entry__copy">
             <p className="eyebrow">Incident thread · workflow begins</p>
@@ -1534,9 +1558,9 @@ export function App() {
     <>
       {isHome ? (
         <main>
+          <Header story />
           <IncidentEntry />
           <div className="home-site">
-            <Header />
             {page}
             <Footer />
           </div>
