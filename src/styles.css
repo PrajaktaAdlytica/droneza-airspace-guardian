@@ -103,13 +103,27 @@ h2 em {
 }
 
 .brand {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   width: 170px;
 }
 
-.brand img {
-  width: 100%;
-  height: auto;
+.brand__mark {
+  width: 34px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.brand__wordmark {
+  font-family: var(--font-heading);
+  font-size: 25px;
+  letter-spacing: 0.045em;
+  line-height: 1;
+}
+
+.brand--light .brand__mark {
+  filter: brightness(0) invert(1);
 }
 
 .main-nav {
@@ -240,6 +254,14 @@ h2 em {
 .sector-index button:focus-visible,
 .faq-list button:focus-visible {
   outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.funding-announcement a:focus-visible,
+.credibility-record a:focus-visible,
+.funding-article a:focus-visible,
+.footer-links a:focus-visible {
+  outline: 2px solid var(--color-accent);
   outline-offset: 4px;
 }
 
@@ -1437,6 +1459,106 @@ h2 em {
   line-height: 1.6;
 }
 
+.funding-announcement {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1.58fr);
+  column-gap: clamp(54px, 8vw, 130px);
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  padding-top: 130px;
+  padding-bottom: 130px;
+  overflow: hidden;
+  border-top: 0;
+  border-bottom: 1px solid rgba(23, 23, 26, 0.16);
+  background: linear-gradient(135deg, rgba(248, 245, 238, 0.78), rgba(217, 210, 196, 0.25));
+}
+
+.funding-announcement::before {
+  position: absolute;
+  top: 0;
+  right: var(--page-pad);
+  left: var(--page-pad);
+  height: 1px;
+  background: var(--color-primary);
+  content: "";
+}
+
+.funding-announcement__meta {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 9px;
+}
+
+.funding-announcement__meta p,
+.funding-announcement__meta time {
+  margin: 0;
+}
+
+.funding-announcement__meta time {
+  font-family: var(--font-heading);
+  font-size: 27px;
+}
+
+.funding-announcement__meta > span {
+  margin-top: auto;
+  color: #696761;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.funding-announcement__story {
+  position: relative;
+  z-index: 1;
+}
+
+.funding-announcement__story h2 {
+  max-width: 970px;
+  margin-bottom: 34px;
+  font-size: clamp(58px, 6.8vw, 104px);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+}
+
+.funding-announcement__story > p {
+  max-width: 760px;
+  margin-bottom: 42px;
+  color: #494743;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.funding-announcement__actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.funding-announcement__rail {
+  position: absolute;
+  right: -32px;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: rgba(23, 23, 26, 0.2);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.funding-announcement__rail i {
+  display: block;
+  width: 52px;
+  height: 1px;
+  background: rgba(140, 49, 65, 0.45);
+}
+
 .company {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -2290,6 +2412,197 @@ h2 em {
   line-height: 1.75;
 }
 
+.credibility-record {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(60px, 9vw, 140px);
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  color: var(--color-paper);
+  background: var(--color-text);
+  border-top: 0;
+}
+
+.credibility-record h2 {
+  max-width: 520px;
+  margin: 0;
+  font-size: clamp(48px, 5vw, 72px);
+  line-height: 0.98;
+}
+
+.credibility-record .chapter {
+  color: var(--color-accent);
+}
+
+.credibility-record__ledger {
+  border-top: 1px solid rgba(242, 238, 230, 0.42);
+}
+
+.credibility-record__ledger dl {
+  margin: 0;
+}
+
+.credibility-record__ledger dl > div {
+  display: grid;
+  grid-template-columns: 0.46fr 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(242, 238, 230, 0.16);
+}
+
+.credibility-record__ledger dt {
+  color: rgba(242, 238, 230, 0.52);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.credibility-record__ledger dd {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(27px, 2.5vw, 38px);
+}
+
+.credibility-record__ledger nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px 30px;
+  padding-top: 30px;
+}
+
+.credibility-record__ledger nav a,
+.funding-article__links > a:not(.button) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-accent);
+  font-size: 13px;
+}
+
+.funding-article__masthead {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1.66fr);
+  gap: clamp(60px, 9vw, 150px);
+  min-height: 760px;
+  padding-top: 190px;
+  padding-bottom: 110px;
+  border-top: 0;
+  border-bottom: 1px solid rgba(23, 23, 26, 0.18);
+}
+
+.funding-article__meta {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 13px;
+}
+
+.funding-article__meta p,
+.funding-article__meta time {
+  margin: 0;
+}
+
+.funding-article__meta time {
+  font-family: var(--font-heading);
+  font-size: 27px;
+}
+
+.funding-article__meta span {
+  margin-top: auto;
+  color: #6b6862;
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.funding-article__title {
+  align-self: end;
+}
+
+.funding-article__title h1 {
+  max-width: 1000px;
+  margin-bottom: 38px;
+  font-size: clamp(68px, 8vw, 122px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+.funding-article__title > p {
+  max-width: 760px;
+  margin: 0;
+  color: #4a4844;
+  font-size: 21px;
+  line-height: 1.68;
+}
+
+.funding-article__body {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.65fr) minmax(0, 1.35fr);
+  gap: clamp(70px, 10vw, 160px);
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-top: 120px;
+  padding-bottom: 140px;
+}
+
+.funding-article__body aside dl {
+  margin: 30px 0 0;
+  border-top: 1px solid rgba(23, 23, 26, 0.35);
+}
+
+.funding-article__body aside dl > div {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(23, 23, 26, 0.15);
+}
+
+.funding-article__body dt {
+  color: #6b6862;
+  font-size: 11px;
+}
+
+.funding-article__body dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.funding-article__copy {
+  max-width: 760px;
+}
+
+.funding-article__copy > p {
+  color: #45433f;
+  font-size: 20px;
+  line-height: 1.8;
+}
+
+.funding-article__copy .funding-article__lead {
+  margin-bottom: 44px;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 4vw, 58px);
+  line-height: 1.08;
+}
+
+.funding-article__links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px 30px;
+  margin-top: 54px;
+  padding-top: 34px;
+  border-top: 1px solid rgba(23, 23, 26, 0.2);
+}
+
 .principles-ledger {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2641,6 +2954,20 @@ h2 em {
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.funding-announcement__actions a,
+.credibility-record__ledger dl > div,
+.credibility-record__ledger nav a,
+.funding-article__body aside dl > div,
+.funding-article__links a,
+.brand__wordmark {
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 260ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @media (hover: hover) and (pointer: fine) {
   .incident-entry__skip:hover {
     color: #d98693;
@@ -2661,6 +2988,11 @@ h2 em {
 
   .brand:hover img {
     transform: translateY(-1px) scale(1.015);
+  }
+
+  .brand:hover .brand__wordmark {
+    color: var(--color-primary);
+    transform: translateX(2px);
   }
 
   .main-nav > a:hover,
@@ -2812,6 +3144,22 @@ h2 em {
     background: rgba(248, 245, 238, 0.64);
     box-shadow: inset 0 4px 0 var(--color-primary);
     transform: translateY(-4px);
+  }
+
+  .credibility-record__ledger dl > div:hover,
+  .funding-article__body aside dl > div:hover {
+    background: rgba(200, 120, 69, 0.07);
+    transform: translateX(6px);
+  }
+
+  .credibility-record__ledger nav a:hover,
+  .funding-article__links > a:not(.button):hover {
+    color: var(--color-paper);
+    transform: translateX(4px);
+  }
+
+  .funding-article__links > a:not(.button):hover {
+    color: var(--color-primary);
   }
 
   .page-closing:hover {
@@ -3259,6 +3607,103 @@ h2 em {
 
   .company {
     gap: 60px;
+  }
+
+  .funding-announcement,
+  .credibility-record,
+  .funding-article__masthead,
+  .funding-article__body {
+    grid-template-columns: 1fr;
+  }
+
+  .funding-announcement {
+    gap: 52px;
+    padding-top: 84px;
+    padding-bottom: 84px;
+  }
+
+  .funding-announcement__meta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px 20px;
+    padding: 0 0 22px;
+    border-bottom: 1px solid rgba(23, 23, 26, 0.16);
+  }
+
+  .funding-announcement__meta > span {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .funding-announcement__story h2 {
+    font-size: 55px;
+  }
+
+  .funding-announcement__story > p {
+    font-size: 17px;
+  }
+
+  .funding-announcement__actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .funding-announcement__rail {
+    display: none;
+  }
+
+  .credibility-record {
+    gap: 50px;
+    padding-top: 82px;
+    padding-bottom: 82px;
+  }
+
+  .credibility-record__ledger dl > div {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .funding-article__masthead {
+    gap: 54px;
+    min-height: 0;
+    padding-top: 140px;
+    padding-bottom: 78px;
+  }
+
+  .funding-article__meta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 13px 20px;
+    padding: 0 0 22px;
+    border-bottom: 1px solid rgba(23, 23, 26, 0.16);
+  }
+
+  .funding-article__meta span {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+
+  .funding-article__title h1 {
+    font-size: 59px;
+  }
+
+  .funding-article__title > p {
+    font-size: 17px;
+  }
+
+  .funding-article__body {
+    gap: 60px;
+    padding-top: 82px;
+    padding-bottom: 94px;
+  }
+
+  .funding-article__copy > p {
+    font-size: 17px;
+  }
+
+  .funding-article__links {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .company-statement h2 {

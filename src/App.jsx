@@ -47,19 +47,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 const products = [
   {
-    name: "Droneza Log",
+    name: "Dronezio Log",
     id: "log",
     description: "Structured incident capture and one operational timeline.",
     icon: FileText,
   },
   {
-    name: "Droneza Risk",
+    name: "Dronezio Risk",
     id: "risk",
     description: "Contextual assessment, ownership, and authorized response.",
     icon: Scale,
   },
   {
-    name: "Droneza Evidence",
+    name: "Dronezio Evidence",
     id: "evidence",
     description: "Provenance, custody, retention, and controlled export.",
     icon: Fingerprint,
@@ -83,24 +83,24 @@ const timeline = [
 ];
 
 const evidenceEvents = [
-  ["Evidence added", "28 Jul 2026 · 21:16 UTC", "A. Martin", "Operations analyst"],
-  ["Handover", "28 Jul 2026 · 21:22 UTC", "J. Verhoeven", "Duty supervisor"],
-  ["Reviewed", "28 Jul 2026 · 21:28 UTC", "L. Dijkstra", "Legal advisor"],
-  ["Sealed", "28 Jul 2026 · 21:35 UTC", "M. Rossi", "Authorised officer"],
+  ["Evidence added", "Mar 31, 2026 · 21:16 UTC", "A. Martin", "Operations analyst"],
+  ["Handover", "Mar 31, 2026 · 21:22 UTC", "J. Verhoeven", "Duty supervisor"],
+  ["Reviewed", "Mar 31, 2026 · 21:28 UTC", "L. Dijkstra", "Legal advisor"],
+  ["Sealed", "Mar 31, 2026 · 21:35 UTC", "M. Rossi", "Authorised officer"],
 ];
 
 const faqs = [
   [
-    "Does Droneza detect drones?",
-    "No. Droneza begins when a person, camera operator, patrol, control room, or authorised external system reports a possible drone. It structures the operational response and evidence trail.",
+    "Does Dronezio detect drones?",
+    "No. Dronezio begins when a person, camera operator, patrol, control room, or authorised external system reports a possible drone. It structures the operational response and evidence trail.",
   ],
   [
-    "Can Droneza decide whether a drone is hostile?",
-    "No. Droneza keeps observation confidence separate from potential consequence and intent. Qualified people remain responsible for decisions and authorised actions.",
+    "Can Dronezio decide whether a drone is hostile?",
+    "No. Dronezio keeps observation confidence separate from potential consequence and intent. Qualified people remain responsible for decisions and authorised actions.",
   ],
   [
-    "Does Droneza replace official reporting systems?",
-    "No. Droneza prepares and preserves structured incident information. External reporting routes, thresholds, and authorities remain customer- and jurisdiction-specific.",
+    "Does Dronezio replace official reporting systems?",
+    "No. Dronezio prepares and preserves structured incident information. External reporting routes, thresholds, and authorities remain customer- and jurisdiction-specific.",
   ],
   [
     "Is the incident shown here real?",
@@ -110,11 +110,9 @@ const faqs = [
 
 function Logo({ light = false }) {
   return (
-    <a className={`brand ${light ? "brand--light" : ""}`} href="/" aria-label="Droneza home">
-      <img
-        src={light ? "/assets/droneza-logo-light.svg" : "/assets/droneza-logo.svg"}
-        alt="Droneza"
-      />
+    <a className={`brand ${light ? "brand--light" : ""}`} href="/" aria-label="Dronezio home">
+      <img className="brand__mark" src="/assets/droneza-mark.svg" alt="" aria-hidden="true" />
+      <span className="brand__wordmark">DRONEZIO</span>
     </a>
   );
 }
@@ -124,6 +122,14 @@ function ArrowLink({ href, children, download }) {
     <a className="text-link" href={href} download={download}>
       <span>{children}</span>
       {download ? <Download size={15} /> : <ArrowRight size={15} />}
+    </a>
+  );
+}
+
+function ExternalLink({ href, className = "", children }) {
+  return (
+    <a className={className} href={href} target="_blank" rel="noreferrer noopener">
+      {children}
     </a>
   );
 }
@@ -189,6 +195,7 @@ function Header() {
         </div>
         <a href="/security" onClick={closeAll}>Security</a>
         <a href="/company" onClick={closeAll}>Company</a>
+        <a href="/news/funding-announcement" onClick={closeAll}>Funding</a>
       </nav>
       <div className="header-actions">
         <a className="sign-in" href="/sign-in">Sign in</a>
@@ -302,7 +309,7 @@ function IncidentEntry() {
         </div>
 
         <div className="incident-entry__boundary">
-          <span>Droneza does not detect, identify, track, classify, or mitigate drones.</span>
+          <span>Dronezio does not detect, identify, track, classify, or mitigate drones.</span>
           <button type="button" onClick={enterSite}>
             <ChevronDown aria-hidden="true" />
             Scroll to follow the incident
@@ -335,7 +342,7 @@ function Hero({ onDemo }) {
       <figure className="observation-card reveal">
         <figcaption>
           <span>Observation fragment</span>
-          <strong>28 Jul 2026 · 21:46 UTC</strong>
+          <strong>Mar 31, 2026 · 21:46 UTC</strong>
           <small>Approx. direction 292° NNW</small>
         </figcaption>
         <div className="observation-frame">
@@ -406,7 +413,7 @@ function TimelineUI() {
         <header className="app-header">
           <div>
             <SimulationLabel />
-            <h3>INC-2026-07-28-017</h3>
+            <h3>INC-2026-03-31-017</h3>
           </div>
           <a href="#risk">View full log <ArrowRight size={14} /></a>
         </header>
@@ -440,9 +447,9 @@ function LogSection() {
   return (
     <section className="log-section section-pad story-section" id="log">
       <div className="section-copy reveal">
-        <p className="chapter">02 · Droneza Log</p>
+        <p className="chapter">02 · Dronezio Log</p>
         <h2>One incident.<br />One timeline.<br />Everyone in sync.</h2>
-        <p>Droneza creates a common record, assigns ownership, and aligns teams from the first report to the last action.</p>
+        <p>Dronezio creates a common record, assigns ownership, and aligns teams from the first report to the last action.</p>
         <ArrowLink href="#risk">Explore the log</ArrowLink>
       </div>
       <TimelineUI />
@@ -455,7 +462,7 @@ function RiskSection() {
     <section className="risk-section story-section" id="risk">
       <div className="risk-inner">
         <div className="risk-column reveal">
-          <p className="chapter">03 · Droneza Risk · Humans decide</p>
+          <p className="chapter">03 · Dronezio Risk · Humans decide</p>
           <h2>Observation confidence</h2>
           <p>We assess what we know, what we do not, and how reliable the sources are.</p>
           <div className="risk-score">
@@ -486,10 +493,10 @@ function RiskSection() {
         <div className="decision-panel reveal">
           <p className="chapter">Decision & authorisation</p>
           <h2>People authorise the response.</h2>
-          <p>Droneza records who decided, what they knew, and why.</p>
+          <p>Dronezio records who decided, what they knew, and why.</p>
           <dl>
             <div><dt><UserRound size={16} /> Decision owner</dt><dd>J. Verhoeven<br /><small>Duty supervisor</small></dd></div>
-            <div><dt><Clock3 size={16} /> Decision time</dt><dd>28 Jul 2026 · 21:16</dd></div>
+            <div><dt><Clock3 size={16} /> Decision time</dt><dd>Mar 31, 2026 · 21:16</dd></div>
             <div><dt><Scale size={16} /> Decision</dt><dd>Monitor & coordinate</dd></div>
             <div><dt><ClipboardCheck size={16} /> Rationale</dt><dd>Medium confidence. Moderate consequence.</dd></div>
             <div><dt><ShieldCheck size={16} /> Authorised action</dt><dd>Increase vigilance. Notify airside ops.</dd></div>
@@ -506,7 +513,7 @@ function EvidenceSection() {
   return (
     <section className="evidence-section section-pad story-section" id="evidence">
       <div className="section-copy reveal">
-        <p className="chapter">04 · Droneza Evidence</p>
+        <p className="chapter">04 · Dronezio Evidence</p>
         <h2>Evidence is captured.<br />Custody is unbroken.<br />The record is ready.</h2>
         <p>Every handoff, file, and decision is locked into a verifiable chain of custody.</p>
         <ArrowLink href="#sealed">View evidence</ArrowLink>
@@ -545,7 +552,7 @@ function SealedRecord({ onDemo }) {
         <p>Ready when it matters—for review, investigation, audit, and operational learning.</p>
       </div>
       <article className="record-seal reveal">
-        <span>INC-2026-07-28-017</span>
+        <span>INC-2026-03-31-017</span>
         <strong>[ 00018472 ]</strong>
         <small>Evidence-ready incident record</small>
         <i>Sealed</i>
@@ -604,7 +611,7 @@ function Solutions() {
 
 function Trust() {
   const items = [
-    ["Human authority", "Droneza records decisions. It does not grant authority or automate interdiction.", UserRound],
+    ["Human authority", "Dronezio records decisions. It does not grant authority or automate interdiction.", UserRound],
     ["Evidence integrity", "Originals, hashes, provenance, custody events, and controlled export.", Fingerprint],
     ["Privacy controls", "Role-based access, policy-led retention, redaction, and legal hold.", LockKeyhole],
     ["Clear boundaries", "Complements national coordination and reporting systems—it does not replace them.", ShieldCheck],
@@ -630,15 +637,121 @@ function Trust() {
   );
 }
 
+function FundingAnnouncement() {
+  return (
+    <section className="funding-announcement section-pad" id="funding" aria-labelledby="funding-announcement-title">
+      <div className="funding-announcement__meta reveal">
+        <p className="eyebrow">Funding announcement</p>
+        <time dateTime="2026-03-31">Mar 31, 2026</time>
+        <span>Company record · 01</span>
+      </div>
+      <div className="funding-announcement__story reveal">
+        <h2 id="funding-announcement-title">Dronezio secures <em>$640K</em> in funding from Dlabs.</h2>
+        <p>Dronezio is part of Dlabs’ global portfolio of companies building airspace intelligence for complex operating environments.</p>
+        <div className="funding-announcement__actions">
+          <a className="text-link" href="/news/funding-announcement">
+            Read the announcement <ArrowRight size={15} />
+          </a>
+          <ExternalLink className="button button--primary" href="https://d-labs-site.vercel.app/companies">
+            View Dlabs portfolio <ArrowUpRight size={16} />
+          </ExternalLink>
+        </div>
+      </div>
+      <div className="funding-announcement__rail reveal" aria-hidden="true">
+        <span>DLABS</span>
+        <i />
+        <span>DRONEZIO</span>
+      </div>
+    </section>
+  );
+}
+
+function CredibilityRecord() {
+  return (
+    <section className="credibility-record section-pad" aria-labelledby="credibility-record-title">
+      <header className="reveal">
+        <p className="chapter">Company record</p>
+        <h2 id="credibility-record-title">Public credibility, kept easy to verify.</h2>
+      </header>
+      <div className="credibility-record__ledger reveal">
+        <dl>
+          <div><dt>Investor</dt><dd>Backed by Dlabs</dd></div>
+          <div><dt>Funding</dt><dd>$640K funding</dd></div>
+          <div><dt>Announced</dt><dd>Mar 31, 2026</dd></div>
+        </dl>
+        <nav aria-label="Company verification links">
+          <ExternalLink href="https://d-labs-site.vercel.app/companies">Dlabs portfolio <ArrowUpRight size={15} /></ExternalLink>
+          <ExternalLink href="https://www.linkedin.com/company/dronezio/">LinkedIn <ArrowUpRight size={15} /></ExternalLink>
+          <ExternalLink href="https://www.crunchbase.com/organization/dronezio">Crunchbase <ArrowUpRight size={15} /></ExternalLink>
+        </nav>
+      </div>
+    </section>
+  );
+}
+
+function FundingArticlePage() {
+  useEffect(() => {
+    const title = "Dronezio secures $640K in funding from Dlabs";
+    const description = "Dronezio has secured $640K in funding from Dlabs. Announced Mar 31, 2026.";
+    document.title = `${title} — Dronezio`;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content", title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute("content", description);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", "https://droneza-airspace-guardian.vercel.app/news/funding-announcement");
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", "https://droneza-airspace-guardian.vercel.app/news/funding-announcement");
+  }, []);
+
+  return (
+    <article className="funding-article">
+      <header className="funding-article__masthead section-pad">
+        <div className="funding-article__meta reveal">
+          <p className="eyebrow">Funding announcement</p>
+          <time dateTime="2026-03-31">Mar 31, 2026</time>
+          <span>Dronezio · Company news</span>
+        </div>
+        <div className="funding-article__title reveal">
+          <h1>Dronezio secures <em>$640K</em> in funding from Dlabs.</h1>
+          <p>Dronezio is part of Dlabs’ global portfolio of companies building airspace intelligence for complex operating environments.</p>
+        </div>
+      </header>
+
+      <section className="funding-article__body section-pad">
+        <aside className="reveal">
+          <p className="chapter">Announcement record</p>
+          <dl>
+            <div><dt>Company</dt><dd>Dronezio</dd></div>
+            <div><dt>Investor</dt><dd>Dlabs</dd></div>
+            <div><dt>Funding</dt><dd>$640K</dd></div>
+            <div><dt>Sector</dt><dd>Airspace intelligence</dd></div>
+            <div><dt>Date</dt><dd>Mar 31, 2026</dd></div>
+          </dl>
+        </aside>
+        <div className="funding-article__copy reveal">
+          <p className="funding-article__lead">Dronezio has secured $640K in funding from Dlabs.</p>
+          <p>Dronezio operates in airspace intelligence.</p>
+          <p>Dronezio is part of Dlabs’ global portfolio of companies building airspace intelligence for complex operating environments.</p>
+          <div className="funding-article__links">
+            <ExternalLink className="button button--primary" href="https://d-labs-site.vercel.app/companies">
+              View Dlabs portfolio <ArrowUpRight size={16} />
+            </ExternalLink>
+            <ExternalLink href="https://www.linkedin.com/company/dronezio/">LinkedIn <ArrowUpRight size={15} /></ExternalLink>
+            <ExternalLink href="https://www.crunchbase.com/organization/dronezio">Crunchbase <ArrowUpRight size={15} /></ExternalLink>
+          </div>
+        </div>
+      </section>
+    </article>
+  );
+}
+
 function Company() {
   return (
     <section className="company section-pad" id="company">
       <div className="company-statement reveal">
-        <p className="eyebrow">Why Droneza exists</p>
+        <p className="eyebrow">Why Dronezio exists</p>
         <h2>Preparedness should not begin after the incident.</h2>
       </div>
       <div className="company-copy reveal">
-        <p>Droneza is a Poland/EU-oriented product concept for teams responsible for critical places and public operations.</p>
+        <p>Dronezio is a Poland/EU-based product startup building airspace intelligence for teams responsible for critical places and public operations.</p>
         <p>We are designing the process layer between a reported sighting and a defensible operational record—with people, authority, privacy, and evidence integrity kept visible at every step.</p>
       </div>
     </section>
@@ -704,7 +817,7 @@ function DemoModal({ open, onClose }) {
         {!submitted ? (
           <>
             <p className="eyebrow">Synthetic incident walkthrough</p>
-            <h2 id="demo-title">Review your scenario through Droneza.</h2>
+            <h2 id="demo-title">Review your scenario through Dronezio.</h2>
             <p>Tell us the operating context. We will prepare a fictional workflow walkthrough—no sensitive incident information required.</p>
             <form onSubmit={handleSubmit}>
               <label>
@@ -749,7 +862,7 @@ function DemoModal({ open, onClose }) {
 
 const productPages = {
   log: {
-    chapter: "Product 01 · Droneza Log",
+    chapter: "Product 01 · Dronezio Log",
     title: <>Turn every report into <em>one shared incident.</em></>,
     intro: "Capture sightings from people and authorised systems, reconcile conflicting fragments, and give every team one operational timeline.",
     promise: "A common record before assumptions harden.",
@@ -766,7 +879,7 @@ const productPages = {
     ],
   },
   risk: {
-    chapter: "Product 02 · Droneza Risk",
+    chapter: "Product 02 · Dronezio Risk",
     title: <>Make uncertainty visible <em>before people decide.</em></>,
     intro: "Separate observation confidence from potential consequence, bring operating context into view, and preserve the rationale behind authorised actions.",
     promise: "Decision support with human authority kept explicit.",
@@ -783,7 +896,7 @@ const productPages = {
     ],
   },
   evidence: {
-    chapter: "Product 03 · Droneza Evidence",
+    chapter: "Product 03 · Dronezio Evidence",
     title: <>Preserve what happened—<em>and who handled it.</em></>,
     intro: "Maintain originals, provenance, custody events, review history, and controlled exports from the first file to the sealed incident record.",
     promise: "An evidence-ready record without losing operational context.",
@@ -930,7 +1043,7 @@ function SolutionsPage() {
       <PageHero
         chapter="Solutions · Operational contexts"
         title={<>Different places. <em>One accountable response layer.</em></>}
-        intro="Droneza gives teams a common workflow while leaving authority, reporting thresholds, and response policy with each organisation."
+        intro="Dronezio gives teams a common workflow while leaving authority, reporting thresholds, and response policy with each organisation."
         promise="Adapt the workflow to the site—keep the record consistent."
       />
       <section className="sector-ledger section-pad">
@@ -949,7 +1062,7 @@ function SolutionsPage() {
           })}
         </div>
       </section>
-      <PageClosing eyebrow="A workflow shaped around responsibility" title="Map Droneza to the way your teams already operate." />
+      <PageClosing eyebrow="A workflow shaped around responsibility" title="Map Dronezio to the way your teams already operate." />
     </>
   );
 }
@@ -966,7 +1079,7 @@ function SecurityPage() {
       <PageHero
         chapter="Security & trust"
         title={<>Sensitive incidents demand <em>explainable controls.</em></>}
-        intro="Droneza is designed around least privilege, evidence integrity, privacy-aware handling, and visible human responsibility."
+        intro="Dronezio is designed around least privilege, evidence integrity, privacy-aware handling, and visible human responsibility."
         promise="Control access without breaking the chain of accountability."
         dark
       />
@@ -992,7 +1105,7 @@ function SecurityPage() {
       </section>
       <section className="boundary-statement section-pad reveal">
         <ShieldCheck size={36} />
-        <h2>Droneza structures workflow and evidence. It does not detect, identify, classify intent, or authorise interdiction.</h2>
+        <h2>Dronezio structures workflow and evidence. It does not detect, identify, classify intent, or authorise interdiction.</h2>
       </section>
       <PageClosing eyebrow="Security review" title="Bring your policy questions into a synthetic walkthrough." />
     </>
@@ -1005,25 +1118,26 @@ function CompanyPage() {
       <PageHero
         chapter="Company · Warsaw, Poland"
         title={<>Preparedness should not begin <em>after the incident.</em></>}
-        intro="Droneza is a Poland/EU-oriented product startup building the process layer between a reported drone sighting and a defensible operational record."
+        intro="Dronezio is a Poland/EU-based product startup building airspace intelligence between a reported drone sighting and a defensible operational record."
         promise="Make critical-incident coordination calmer, clearer, and accountable."
       />
       <section className="company-story section-pad">
-        <div className="reveal"><p className="chapter">Why Droneza</p><h2>Critical teams already have procedures. The gap appears between them.</h2></div>
+        <div className="reveal"><p className="chapter">Why Dronezio</p><h2>Critical teams already have procedures. The gap appears between them.</h2></div>
         <div className="reveal">
           <p>Reports arrive through radio, phone, email, patrols, control rooms, and authorised systems. Each fragment may be useful, but without a shared chronology, teams can act on different versions of the same incident.</p>
-          <p>Droneza is being designed to keep the observation, operating context, human decision, authorised action, and evidence trail connected—without pretending software replaces qualified judgement or public authority.</p>
+          <p>Dronezio is being designed to keep the observation, operating context, human decision, authorised action, and evidence trail connected—without pretending software replaces qualified judgement or public authority.</p>
         </div>
       </section>
+      <CredibilityRecord />
       <section className="principles-ledger section-pad">
         {[
           ["01", "People remain responsible", "Software can organise context. It cannot inherit operational or legal authority."],
           ["02", "Uncertainty stays visible", "A report is not an identification, and confidence is not intent."],
           ["03", "Evidence keeps its history", "Provenance and custody are part of the record, not an afterthought."],
-          ["04", "Boundaries build trust", "Droneza complements customer procedures and official systems; it does not replace them."],
+          ["04", "Boundaries build trust", "Dronezio complements customer procedures and official systems; it does not replace them."],
         ].map(([number, title, copy]) => <article className="reveal" key={title}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}
       </section>
-      <PageClosing eyebrow="Work with Droneza" title="Help shape a workflow grounded in real operational responsibility." />
+      <PageClosing eyebrow="Work with Dronezio" title="Help shape a workflow grounded in real operational responsibility." />
     </>
   );
 }
@@ -1079,7 +1193,7 @@ function SignInPage() {
       <div className="signin-page__context reveal">
         <Logo light />
         <div>
-          <p className="chapter">Droneza workspace</p>
+          <p className="chapter">Dronezio workspace</p>
           <h1>Return to the incident record.</h1>
           <p>Access is limited to invited organisations and authorised users.</p>
         </div>
@@ -1089,10 +1203,10 @@ function SignInPage() {
         {!submitted ? (
           <form onSubmit={(event) => { event.preventDefault(); setSubmitted(true); }}>
             <p className="micro-heading">Secure access</p>
-            <h2>Sign in to Droneza.</h2>
+            <h2>Sign in to Dronezio.</h2>
             <label>Work email<input type="email" placeholder="name@organisation.eu" required /></label>
             <label>Password<input type="password" placeholder="Enter your password" required /></label>
-            <div className="signin-options"><label><input type="checkbox" /> Keep me signed in</label><a href="mailto:hello@droneza.io?subject=Droneza%20access%20help">Access help</a></div>
+            <div className="signin-options"><label><input type="checkbox" /> Keep me signed in</label><ExternalLink href="https://www.linkedin.com/company/dronezio/">Access help</ExternalLink></div>
             <button className="button button--primary" type="submit">Continue securely <ArrowRight size={17} /></button>
             <p className="signin-note"><LockKeyhole size={15} /> Prototype interface—authentication is not connected.</p>
           </form>
@@ -1114,15 +1228,15 @@ function LegalPage({ type }) {
   const privacy = type === "privacy";
   return (
     <section className="legal-page section-pad">
-      <header className="reveal"><p className="chapter">Legal · Demo concept</p><h1>{privacy ? "Privacy notice" : "Terms of use"}</h1><p>Last updated 29 July 2026</p></header>
+      <header className="reveal"><p className="chapter">Legal · Demo concept</p><h1>{privacy ? "Privacy notice" : "Terms of use"}</h1><p>Last updated Mar 31, 2026</p></header>
       <div className="reveal">
         <aside><strong>Important</strong><p>This website is a fictional product demonstration. It does not collect or transmit form submissions.</p></aside>
         <article>
           <h2>{privacy ? "How this prototype handles information" : "Using this prototype"}</h2>
-          <p>{privacy ? "Interactive forms exist only to demonstrate interface states. Submitted values remain in the browser session and are not sent to Droneza or any external service." : "All company, customer, incident, person, site, file, and outcome details shown here are synthetic. Nothing on this site is operational, legal, safety, or security advice."}</p>
+          <p>{privacy ? "Interactive forms exist only to demonstrate interface states. Submitted values remain in the browser session and are not sent to Dronezio or any external service." : "All customer, incident, person, site, file, and outcome details shown here are synthetic. Nothing on this site is operational, legal, safety, or security advice."}</p>
           <h2>{privacy ? "Sensitive information" : "Product boundaries"}</h2>
           <p>Do not enter real incident information, personal data, credentials, protected-site details, or other sensitive material into this prototype.</p>
-          <h2>Contact</h2><p>Questions about this demo can be directed to <a href="mailto:hello@droneza.io">hello@droneza.io</a>.</p>
+          <h2>Contact</h2><p>Questions about this demo can be directed through <ExternalLink href="https://www.linkedin.com/company/dronezio/">Dronezio on LinkedIn</ExternalLink>.</p>
         </article>
       </div>
     </section>
@@ -1140,11 +1254,11 @@ function Footer() {
       <div className="footer-links">
         <div><strong>Product</strong>{products.map(({ name, id }) => <a href={`/product/${id}`} key={name}>{name}</a>)}</div>
         <div><strong>Solutions</strong>{sectors.map(({ name }) => <a href={`/solutions#${name.toLowerCase().replaceAll(" ", "-")}`} key={name}>{name}</a>)}</div>
-        <div><strong>Company</strong><a href="/company">About</a><a href="/security">Security</a><a href="/#faq">FAQ</a></div>
-        <div><strong>Legal</strong><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="mailto:hello@droneza.io">hello@droneza.io</a></div>
+        <div><strong>Company</strong><a href="/company">About</a><a href="/news/funding-announcement">Funding announcement</a><a href="/security">Security</a><a href="/#faq">FAQ</a></div>
+        <div><strong>Verify</strong><ExternalLink href="https://d-labs-site.vercel.app/companies">Dlabs portfolio</ExternalLink><ExternalLink href="https://www.linkedin.com/company/dronezio/">LinkedIn</ExternalLink><ExternalLink href="https://www.crunchbase.com/organization/dronezio">Crunchbase</ExternalLink><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
       </div>
       <div className="footer-bottom">
-        <span>© 2026 Droneza. Demo product concept.</span>
+        <span>© 2026 Dronezio. Demo product concept.</span>
         <span>Warsaw, Poland · European Union</span>
         <SimulationLabel dark />
       </div>
@@ -1170,6 +1284,8 @@ export function App() {
         ".control-ledger article",
         ".sector-ledger article",
         ".principles-ledger article",
+        ".credibility-record__ledger dl > div",
+        ".funding-article__body aside dl > div",
         ".trust-flow article",
         ".trust-list article",
       ].join(",");
@@ -1383,6 +1499,7 @@ export function App() {
         </div>
         <Solutions />
         <Trust />
+        <FundingAnnouncement />
         <Company />
         <FAQ />
       </>
@@ -1395,6 +1512,8 @@ export function App() {
     page = <SecurityPage />;
   } else if (path === "/company") {
     page = <CompanyPage />;
+  } else if (path === "/news/funding-announcement") {
+    page = <FundingArticlePage />;
   } else if (path === "/request-demo") {
     page = <DemoPage />;
   } else if (path === "/sign-in") {

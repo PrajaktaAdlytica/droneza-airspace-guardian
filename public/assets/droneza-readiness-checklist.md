@@ -1,6 +1,6 @@
 # Drone Incident Readiness Checklist
 
-This checklist is a general planning aid for a fictional Droneza demonstration. It is not legal, aviation, security, or regulatory advice.
+This checklist is a general planning aid for a fictional Dronezio product demonstration. It is not legal, aviation, security, or regulatory advice.
 
 ## Before an incident
 
@@ -28,4 +28,4 @@ This checklist is a general planning aid for a fictional Droneza demonstration. 
 - Apply the correct retention or legal-hold policy.
 - Assign improvement actions with owners and due dates.
 
-For a synthetic workflow walkthrough, contact hello@droneza.io.
+For a synthetic workflow walkthrough, visit the Dronezio request-demo page.
