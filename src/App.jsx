@@ -775,7 +775,7 @@ function Company() {
         <h2>Preparedness should not begin after the incident.</h2>
       </div>
       <div className="company-copy reveal">
-        <p>Dronezio is a Poland/EU-based product startup building airspace intelligence for teams responsible for critical places and public operations.</p>
+        <p>Dronezio is a Luxembourg/EU-based product startup building airspace intelligence for teams responsible for critical places and public operations.</p>
         <p>We are designing the process layer between a reported sighting and a defensible operational record—with people, authority, privacy, and evidence integrity kept visible at every step.</p>
       </div>
     </section>
@@ -1140,9 +1140,9 @@ function CompanyPage() {
   return (
     <>
       <PageHero
-        chapter="Company · Warsaw, Poland"
+        chapter="Company · Luxembourg City, Luxembourg"
         title={<>Preparedness should not begin <em>after the incident.</em></>}
-        intro="Dronezio is a Poland/EU-based product startup building airspace intelligence between a reported drone sighting and a defensible operational record."
+        intro="Dronezio is a Luxembourg/EU-based product startup building airspace intelligence between a reported drone sighting and a defensible operational record."
         promise="Make critical-incident coordination calmer, clearer, and accountable."
       />
       <section className="company-story section-pad">
@@ -1283,7 +1283,7 @@ function Footer() {
       </div>
       <div className="footer-bottom">
         <span>© 2026 Dronezio. Demo product concept.</span>
-        <span>Warsaw, Poland · European Union</span>
+        <span>1347 George Road · Luxembourg City, LU 1131 · Luxembourg · Phone: 829 695 160</span>
         <SimulationLabel dark />
       </div>
     </footer>
